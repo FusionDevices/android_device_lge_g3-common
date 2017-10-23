@@ -37,7 +37,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=g3 user_debug=31 msm_rtb.filter=0x0
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=g3 user_debug=31 androidboot.selinux=permissive msm_rtb.filter=0x0
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -97,14 +97,23 @@ TARGET_POWERHAL_VARIANT := qcom
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 
+# Bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+
 # Recovery
 BOARD_NO_SECURE_DISCARD := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# SDClang
+# Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
+# USE_CLANG_PLATFORM_BUILD := true
+
+# STRICT_ALIASING := true
+CLANG_FAST := true
+ENABLE_CPUSETS := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
